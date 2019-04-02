@@ -5,18 +5,20 @@ function calculateFactorial(numberEntered) {
   } else {
     for (i=1; i <= numberEntered; i++){
       factorial *= i;
-      console.log ("loop " + i);
     }
   }
-  console.log (factorial);
+//  console.log (factorial);
   return factorial;
 }
 
 $(document).ready(function() {
-  $("form#leap-year").submit(function(event) {
+  $("form#factorialForm").submit(function(event) {
     event.preventDefault();
 
     var numberEntered = parseInt($("input#numberEntered").val());
     var factorial = calculateFactorial(numberEntered);
+    $("#factorialForm").hide();
+    $("#result").empty;
+    $("#result").append(numberEntered + "! = " + factorial);
   });
 });
