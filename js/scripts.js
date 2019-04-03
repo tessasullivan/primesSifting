@@ -1,24 +1,31 @@
-function calculateFactorial(numberEntered) {
-  var factorial = 1;
-  if (numberEntered === 0 || numberEntered === 1) {
-    return factorial;
-  } else {
-    for (i=1; i <= numberEntered; i++){
-      factorial *= i;
-    }
+function fillPrimes(numberInput) {
+  primes = [];
+  for (var i=2; i <= numberInput; i++) {
+    primes.push(i);
   }
-//  console.log (factorial);
-  return factorial;
+  return primes;
+}
+
+function siftPrimes (primes) {
+  var index = 0;
+  var numberEntered = primes[primes.length - 1];
+//  console.log(numberEntered);
+  var outputString = "";
+  for (var numToTest=2; numToTest <= numberEntered; numToTest++) {
+    outputString = outputString + ", " + ;
+  }
+  return outputString;
 }
 
 $(document).ready(function() {
-  $("form#factorialForm").submit(function(event) {
+  $("#primesForm").submit(function(event) {
     event.preventDefault();
 
-    var numberEntered = parseInt($("input#numberEntered").val());
-    var factorial = calculateFactorial(numberEntered);
-    $("#factorialForm").hide();
+    var numberInput = parseInt($("input#numberEntered").val());
+    var primes = fillPrimes(numberInput);
+    var outputString = siftPrimes(primes);
+    $("#primesForm").hide();
     $("#result").empty;
-    $("#result").append(numberEntered + "! = " + factorial);
+    $("#result").append(outputString);
   });
 });
